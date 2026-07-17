@@ -1,0 +1,90 @@
+{
+  "entities": {
+    "TroubleShootingLog": {
+      "title": "TroubleShootingLog",
+      "description": "설비 이상 고장 현상-원인-조치 내용 데이터",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "equipmentName": { "type": "string" },
+        "phenomenon": { "type": "string" },
+        "cause": { "type": "string" },
+        "solution": { "type": "string" },
+        "tags": { "type": "array" },
+        "authorId": { "type": "string" },
+        "authorEmail": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["equipmentName", "phenomenon", "cause", "solution", "authorId", "createdAt"]
+    },
+    "ImprovementIdea": {
+      "title": "ImprovementIdea",
+      "description": "공정 개선 제안 보드",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "expectedEffect": { "type": "string" },
+        "authorId": { "type": "string" },
+        "authorEmail": { "type": "string" },
+        "status": { "type": "string" },
+        "likesCount": { "type": "number" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["title", "description", "authorId", "status", "createdAt"]
+    },
+    "AutomationTask": {
+      "title": "AutomationTask",
+      "description": "공정 자동화 과제 리스트",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "taskName": { "type": "string" },
+        "processName": { "type": "string" },
+        "cost": { "type": "number" },
+        "expectedSavings": { "type": "number" },
+        "roiYears": { "type": "number" },
+        "stage": { "type": "string" },
+        "authorId": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["taskName", "processName", "cost", "expectedSavings", "roiYears", "stage", "authorId", "createdAt"]
+    },
+    "CapaSimulation": {
+      "title": "CapaSimulation",
+      "description": "Capa 시뮬레이션 히스토리",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "lineName": { "type": "string" },
+        "workers": { "type": "number" },
+        "shiftHours": { "type": "number" },
+        "cycleTimes": { "type": "object" },
+        "bottleneckProcess": { "type": "string" },
+        "utilization": { "type": "number" },
+        "authorId": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["lineName", "workers", "shiftHours", "cycleTimes", "bottleneckProcess", "utilization", "authorId", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/troubleshoot_logs/{logId}": {
+      "schema": "TroubleShootingLog",
+      "description": "설비 트러블슈팅 로그 컬렉션"
+    },
+    "/improvement_ideas/{ideaId}": {
+      "schema": "ImprovementIdea",
+      "description": "개선 제안 아이디어 컬렉션"
+    },
+    "/automation_tasks/{taskId}": {
+      "schema": "AutomationTask",
+      "description": "자동화 과제 관리 컬렉션"
+    },
+    "/capa_simulations/{simId}": {
+      "schema": "CapaSimulation",
+      "description": "Capa 시뮬레이션 히스토리 컬렉션"
+    }
+  }
+}

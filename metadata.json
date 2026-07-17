@@ -1,0 +1,6 @@
+{
+  "name": "Aero-Tech Navigator",
+  "description": "스마트 제조 생산기술 통합 관리 플랫폼 - 생산 실적, 재고, Capa 시뮬레이터, 고장 트러블슈팅 DB, 개선 제안 보드 통합 관리",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
